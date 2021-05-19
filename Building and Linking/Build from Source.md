@@ -1,0 +1,187 @@
+> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build.html)
+
+> Download oneDNN source code or clone the repository
+
+Download the Source Code
+------------------------
+
+Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/master.zip) or clone [the repository](https://github.com/oneapi-src/oneDNN.git).
+
+Build the Library
+-----------------
+
+Ensure that all software dependencies are in place and have at least the minimal supported version.
+
+The oneDNN build system is based on CMake. Use
+
+*   `CMAKE_INSTALL_PREFIX` to control the library installation location,
+*   `CMAKE_BUILD_TYPE` to select between build type (`Release`, `Debug`, `RelWithDebInfo`).
+*   `CMAKE_PREFIX_PATH` to specify directories to be searched for the dependencies located at non-standard locations.
+
+See [Build Options](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.html) for detailed description of build-time configuration options.
+
+### Linux/macOS
+
+#### GCC, Clang, or Intel C/C++ Compiler
+
+*   Set up the environment for the compiler
+*   Configure CMake and generate makefiles
+    
+    mkdir -p build
+    
+    cd build
+    
+    # Uncomment the following lines to build with Clang
+    
+    # export CC=clang
+    
+    # export CXX=clang++
+    
+    # Uncomment the following lines to build with Intel C/C++ Compiler
+    
+    # export CC=icc
+    
+    # export CXX=icpc
+    
+    cmake .. <extra build options>
+    
+*   Build the library
+
+#### oneAPI DPC++ Compiler
+
+*   Set up the environment for oneAPI DPC++ Compiler. For Intel oneAPI Base Toolkit distribution installed to default location you can do this using `setenv.sh` script
+    
+    source /opt/intel/oneapi/setvars.sh
+    
+*   Configure CMake and generate makefiles
+    
+    mkdir -p build
+    
+    cd build
+    
+    export CC=clang
+    
+    export CXX=clang++
+    
+    cmake .. \
+    
+    -DDNNL_CPU_RUNTIME=DPCPP
+    
+    -DDNNL_GPU_RUNTIME=DPCPP
+    
+    <extra build options>
+    
+*   Build the library
+
+#### GCC targeting AArch64 on x64 host
+
+*   Set up the environment for the compiler
+*   Configure CMake and generate makefiles
+    
+    export CC=aarch64-linux-gnu-gcc
+    
+    export CXX=aarch64-linux-gnu-g++
+    
+    cmake .. \
+    
+    -DCMAKE_SYSTEM_NAME=Linux \
+    
+    -DCMAKE_SYSTEM_PROCESSOR=AARCH64 \
+    
+    -DCMAKE_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib \
+    
+    <extra build options>
+    
+*   Build the library
+
+#### GCC with Arm Compute Library (ACL) on AArch64 host
+
+*   Set up the environment for the compiler
+*   Configure CMake and generate makefiles
+    
+    export ACL_ROOT_DIR=<path/to/Compute Library>
+    
+    cmake .. \
+    
+    -DDNNL_AARCH64_USE_ACL=ON \
+    
+    <extra build options>
+    
+*   Build the library
+
+### Windows
+
+#### Microsoft Visual C++ Compiler or Intel C/C++ Compiler
+
+*   Generate a Microsoft Visual Studio solution
+    
+    mkdir build
+    
+    cd build
+    
+    cmake -G "Visual Studio 15 2017 Win64" ..
+    
+    For the solution to use the Intel C++ Compiler, select the corresponding toolchain using the cmake `-T` switch:
+    
+    cmake -G "Visual Studio 15 2017 Win64" -T "Intel C++ Compiler 19.0" ..
+    
+*   Build the library
+
+Note
+
+You can also open `oneDNN.sln` to build the project from the Microsoft Visual Studio IDE.
+
+#### oneAPI DPC++ Compiler
+
+*   Set up the environment for oneAPI DPC++ Compiler. For Intel oneAPI Base Toolkit distribution installed to default location you can do this using `setvars.bat` script
+    
+    "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+    
+    or open `Intel oneAPI Commmand Prompt` instead.
+*   Download [oneAPI Level Zero headers](https://github.com/oneapi-src/level-zero/releases/tag/v1.0) from Github and unpack the archive.
+*   Generate `Ninja` project
+    
+    mkdir build
+    
+    cd build
+    
+    :: Set C and C++ compilers
+    
+    set CC=clang
+    
+    set CXX=clang++
+    
+    cmake .. -G Ninja -DDNNL_CPU_RUNTIME=DPCPP ^
+    
+    -DDNNL_GPU_RUNTIME=DPCPP ^
+    
+    -DCMAKE_PREFIX_PATH=<path to Level Zero headers> ^
+    
+    <extra build options>
+    
+    Note
+    
+    The only CMake generator that supports oneAPI DPC++ Compiler on Windows is Ninja. CC and CXX variables must be set to clang and clang++ respectively.
+    
+*   Build the library
+
+Validate the Build
+------------------
+
+If the library is built for the host system, you can run unit tests using:
+
+Build documenation
+------------------
+
+Build the documentation:
+
+cmake --build . --target doc
+
+Install library
+---------------
+
+Install the library, headers, and documentation
+
+cmake --build . --target install
+
+The install directory is specified by the [CMAKE_INSTALL_PREFIX](https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html) cmake variable. When installing in the default directory, the above command needs to be run with administrative privileges using `sudo` on Linux/Mac or a command prompt run as administrator on Windows.
