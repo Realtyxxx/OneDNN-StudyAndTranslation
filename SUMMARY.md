@@ -5,4 +5,4 @@
   * [Build Options](Building and Linking/Build Options.md)
   * [Linking To The Library](Building and Linking/Linking To The Library.md)
 - [Advanced Topics](advanced-topics/README.md)
-  * [8位整型计算的微妙差别](advanced-topics/8位整型计算的微妙差别.md)
+  * [Nuances Of Int 8 Computations](advanced-topics/Nuances of int8 computations.md)
