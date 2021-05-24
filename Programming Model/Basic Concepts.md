@@ -43,7 +43,7 @@ _Streams_ ([dnnl::stream](https://oneapi-src.github.io/oneDNN/structdnnl_1_1stre
 ### Memory Objects
 
 _Memory objects_ ([dnnl::memory](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html)) encapsulate handles to memory allocated on a specific engine, tensor dimensions, data type, and memory format – the way tensor indices map to offsets in linear memory space. Memory objects are passed to primitives during execution.  
-内存对象（dnnl :: memory）封装了在特定引擎上分配的内存，张量尺寸,数据类型和内存格式的句柄-张量索引映射到线性内存空间中的偏移量的方式。 内存对象在执行期间被传递给基元。
+内存对象（dnnl :: memory）封装了在特定引擎上分配的内存，张量尺寸,数据类型和内存格式(张量索引映射到线性内存空间中的偏移量的方式)的句柄。 内存对象在执行期间被传递给基元。
 
 Levels of Abstraction
 抽象等级
