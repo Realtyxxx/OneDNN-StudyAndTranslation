@@ -35,11 +35,13 @@ The examples below assume that oneDNN is installed in the directory defined in t
 
 ### Linux/macOS
 
+```bash
 g++ -std=c++11 -I${DNNLROOT}/include -L${DNNLROOT}/lib simple_net.cpp -ldnnl
 
 clang++ -std=c++11 -I${DNNLROOT}/include -L${DNNLROOT}/lib simple_net.cpp -ldnnl
 
 icpc -std=c++11 -I${DNNLROOT}/include -L${DNNLROOT}/lib simple_net.cpp -ldnnl
+```
 
 > Note
 >
