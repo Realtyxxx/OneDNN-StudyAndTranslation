@@ -33,7 +33,7 @@ oneDNN是围绕原语（dnnl :: primitive）的概念构建的。 原语是封�
 
 ### Engines
 
-_Engines_ ([dnnl::engine](https://oneapi-src.github.io/oneDNN/structdnnl_1_1engine.html)) is an abstraction of a computational device: a CPU, a specific GPU card in the system, etc. Most primitives are created to execute computations on one specific engine. The only exceptions are reorder primitives that transfer data between two different engines.
+_Engines_ ([dnnl::engine](https://oneapi-src.github.io/oneDNN/structdnnl_1_1engine.html)) is an abstraction of a computational device: a CPU, a specific GPU card in the system, etc. Most primitives are created to execute computations on one specific engine. The only exceptions are reorder primitives that transfer data between two different engines.  
 引擎：其实是计算设备的抽象，有可能是一个CPU或者GPU卡，大部分原语都是在特定引擎上计算，唯一例外是两个不同引擎间传输数据的重排序原语可能会在两个引擎上执行。
 
 ### Streams
