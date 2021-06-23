@@ -1,5 +1,7 @@
 # 8位整型计算的微妙差别
 
+[toc]
+
 > 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_int8_computations.html)
 >
 > This document uses **int8** to denote 8-bit integer no matter whether it is signed or unsigned. To emphasize the signedness of the data type **u8** \(`uint8_t`\) or **s8** \(`int8_t`\) are used. In particular, if a primitive has two inputs the types would be written using "/". For instance:
