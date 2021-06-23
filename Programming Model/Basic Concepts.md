@@ -1,8 +1,8 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_basic_concepts.html)
+>  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_basic_concepts.html)
+
+# 基本概念
 
 ### 总结：
-
-
 
 > In this page, an outline of the oneDNN programming model is presented, and the key concepts are discu......  
 > 这章将会表达oneDNN的编程模型和关键概念

@@ -1,4 +1,6 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.html)
+# 安装选项
+
+>  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.html)
 
 > oneDNN supports the following build-time options.
 

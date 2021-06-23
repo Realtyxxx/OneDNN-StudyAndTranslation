@@ -1,4 +1,6 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_link.html)
+# 链接库
+
+> 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_link.html)
 
 > oneDNN includes several header files providing C and C++ APIs for the functionality and one or severa......
 
