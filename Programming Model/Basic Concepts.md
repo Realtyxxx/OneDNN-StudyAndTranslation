@@ -21,10 +21,12 @@ Figure 1: Overview of oneDNN programming model. Blue rectangles denote oneDNN ob
 ### Primitives
 
 * oneDNN is built around the notion of a _primitive_ ([dnnl::primitive](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive.html)). A _primitive_ is an object that encapsulates a particular computation such as forward convolution, backward LSTM computations, or a data transformation operation. Additionally, using primitive _attributes_ ([dnnl::primitive_attr](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive__attr.html)) certain primitives can represent more complex _fused_ computations such as a forward convolution followed by a ReLU. 
-**oneDNN是围绕原语（dnnl :: primitive）的概念构建的。 原语是封装特定计算（例如正向卷积，反向LSTM计算或数据转换操作）的对象。 此外，使用原语属性（dnnl :: primitive_attr），某些原语可以表示更复杂的融合计算，例如后接ReLU的正向卷积。**
+
+  **oneDNN是围绕原语（dnnl :: primitive）的概念构建的。 原语是封装特定计算（例如正向卷积，反向LSTM计算或数据转换操作）的对象。 此外，使用原语属性（dnnl :: primitive_attr），某些原语可以表示更复杂的融合计算，例如后接ReLU的正向卷积。**
 
 * The most important difference between a primitive and a pure function is that a primitive can store state.  
-**原语和纯函数之间的最重要区别是，原语可以存储状态。**
+  **原语和纯函数之间的最重要区别是，原语可以存储状态。**
+
 * One part of the primitive’s state is immutable. For example, convolution primitives store parameters like tensor shapes and can pre-compute other dependent parameters like cache blocking. This approach allows oneDNN primitives to pre-generate code specifically tailored for the operation to be performed. The oneDNN programming model assumes that the time it takes to perform the pre-computations is amortized by reusing the same primitive to perform computations multiple times.  
 **原语的一部分是不可变的。 例如，卷积原语存储类似张量形状的参数，并可以预计算其他相关参数，例如缓存阻塞（缓存打包？cache blocking）。 这种方法允许一个DNN原语预生成专门为将要执行的操作量身定制的代码。 oneDNN编程模型假定通过重复使用同一原语多次执行计算来摊销执行预计算所需的时间。**
 
