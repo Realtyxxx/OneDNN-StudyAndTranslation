@@ -80,11 +80,13 @@ When building oneDNN with oneAPI DPC++/C++ Compiler the library will link to Int
 >
 > **由于不同的 OpenMP 运行时可能不是二进制兼容的，因此确保在整个应用程序中只使用一个 OpenMP 运行时很重要。 将多个 OpenMP 运行时链接到一个可执行文件可能会导致未定义的行为，包括不正确的结果或崩溃。 但是，只要库和应用程序使用相同或兼容的编译器，就不会有冲突。**
 
-#### Threading Building Blocks (TBB)
+#### Threading Building Blocks (TBB)/线程构建块
 
 To build oneDNN with TBB support, set `DNNL_CPU_RUNTIME` to `TBB`:
 
-```cmake
+**要构建具有 TBB 支持的 oneDNN，请将 `DNNL_CPU_RUNTIME` 设置为 `TBB`：**
+
+```bash
 $ cmake -DDNNL_CPU_RUNTIME=TBB ..
 ```
 
@@ -92,7 +94,9 @@ $ cmake -DDNNL_CPU_RUNTIME=TBB ..
 
 Optionally, set the `TBBROOT` environmental variable to point to the TBB installation path or pass the path directly to CMake:
 
-```cmake
+**或者，将 `TBBROOT` 环境变量设置为指向 TBB 安装路径或将路径直接传递给 CMake：**
+
+```bash
 $ cmake -DDNNL_CPU_RUNTIME=TBB -DTBBROOT=/opt/intel/path/tbb ..
 ```
 
@@ -100,31 +104,45 @@ $ cmake -DDNNL_CPU_RUNTIME=TBB -DTBBROOT=/opt/intel/path/tbb ..
 
 oneDNN has functional limitations if built with TBB:
 
-*   Winograd convolution algorithm is not supported for fp32 backward by data and backward by weights propagation.
+**如果使用 TBB 构建，oneDNN 具有功能限制：**
 
-#### Threadpool
+* Winograd convolution algorithm is not supported for fp32 backward by data and backward by weights propagation.
+
+  **按数据向后和按权重传播向后的 fp32（32位浮点数） 不支持 Winograd 卷积算法。**
+
+#### Threadpool/线程池
 
 To build oneDNN with support for threadpool threading, set `DNNL_CPU_RUNTIME` to `THREADPOOL`
 
-```cmake
+**要构建支持线程池线程的 oneDNN，请将 `DNNL_CPU_RUNTIME` 设置为 `THREADPOOL`**
+
+```bash
 $ cmake -DDNNL_CPU_RUNTIME=THREADPOOL ..
 ```
 
 The `_DNNL_TEST_THREADPOOL_IMPL` CMake variable controls which of the three threadpool implementations would be used for testing: `STANDALONE`, `TBB`, or `EIGEN`. The latter two require also passing `TBBROOT` or `Eigen3_DIR` paths to CMake. For example:
 
-```cmake
-$ cmake -DDNNL_CPU_RUNTIME=THREADPOOL -D_DNNL_TEST_THREADPOOL_IMPL=EIGEN -DEigen3_DIR=/path/to/eigen/share/eigen3/cmake ..
+**`_DNNL_TEST_THREADPOOL_IMPL` CMake 变量控制三个线程池实现中的哪一个将用于测试：`STANDALONE`、`TBB` 或`EIGEN`。 后两者还需要将 `TBBROOT` 或 `Eigen3_DIR` 路径传递给 CMake。 例如：**
+
+```bash
+$ cmake -DDNNL_CPU_RUNTIME=THREADPOOL -D_DNNL_TEST_THREADPOOL_IMPL=EIGEN DEigen3_DIR=/path/to/eigen/share/eigen3/cmake ..
 ```
 
 
 
 Threadpool threading support is experimental and has the same limitations as TBB plus more:
 
-*   As threadpools are attached to streams which are only passed during primitive execution, work decomposition is performed statically at the primitive creation time. At the primitive execution time, the threadpool is responsible for balancing the static decomposition from the previous item across available worker threads.
+**线程池线程支持是实验性的，并且具有与 TBB相同甚至更多的限制：**
 
-### AArch64 Options
+* As threadpools are attached to streams which are only passed during primitive execution, work decomposition is performed statically at the primitive creation time. At the primitive execution time, the threadpool is responsible for balancing the static decomposition from the previous item across available worker threads.
+
+  **由于线程池附加到仅在基元执行期间传递的流，因此在基元创建时静态执行工作分解。 在原语执行时，线程池负责平衡可用工作线程之间来自前一项的静态分解。**
+
+### AArch64 Options/AArch64 选项
 
 oneDNN includes experimental support for Arm 64-bit Architecture (AArch64). By default, AArch64 builds will use the reference implementations throughout. The following options enable the use of AArch64 optimised implementations for a limited number of operations, provided by AArch64 libraries.
+
+**oneDNN包含了对Arm64位架构（AArch64）试验性支持，默认条件下，AArch64构建将始终使用参考实现，以下这些AArch64库提供的选项允许使用AArch64优化的实现来提供有限数量的操作。**
 
 <table><tbody><tr><th>AArch64 build configuration</th><th>CMake Option</th><th>Environment variables</th><th>Dependencies</th></tr><tr><td>Arm Compute Library based primitives</td><td>DNNL_AARCH64_USE_ACL=ON</td><td>ACL_ROOT_DIR=*Arm Compute Library location*</td><td><a href="https://github.com/ARM-software/ComputeLibrary">Arm Compute Library</a></td></tr><tr><td>Vendor BLAS library support</td><td>DNNL_BLAS_VENDOR=ARMPL</td><td>None</td><td><a href="https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries">Arm Performance Libraries</a></td></tr></tbody></table>
 
@@ -132,7 +150,9 @@ oneDNN includes experimental support for Arm 64-bit Architecture (AArch64). By d
 
 Arm Compute Library is an open-source library for machine learning applications. The development repository is available from [mlplatform.org](https://review.mlplatform.org/#/admin/projects/ml/ComputeLibrary), and releases are also available on [GitHub](https://github.com/ARM-software/ComputeLibrary). The `DNNL_AARCH64_USE_ACL` CMake option is used to enable Compute Library integration:
 
-```cmake
+**ACL是一个为机器学习应用的开源库，开发存储库可从 [mlplatform.org](https://review.mlplatform.org/#/admin/projects/ml/ComputeLibrary) 获得，也可在 [GitHub](https://github.com/ARM-software/ComputeLibrary)获得。CMake选项`DNNL_AARCH64_USE_ACL` 用于启用计算库集成：**
+
+```bash
 $ cmake -DDNNL_AARCH64_USE_ACL=ON ..
 ```
 
@@ -140,17 +160,25 @@ $ cmake -DDNNL_AARCH64_USE_ACL=ON ..
 
 This assumes that the environment variable `ACL_ROOT_DIR` is set to the location of Arm Compute Library, which must be downloaded and built independently of oneDNN.
 
-Warning
+**这里假设环境变量 `ACL_ROOT_DIR` 设置为 Arm Compute Library 的位置，必须<u>独立于 oneDNN 下载和构建</u>。**
 
-For a debug build of oneDNN it is advisable to specify a Compute Library build which has also been built with debug enabled.
-
-oneDNN is only compatible with Compute Library builds v21.02 or later.
+> Warning
+>
+> For a debug build of oneDNN it is advisable to specify a Compute Library build which has also been built with debug enabled.
+>
+> **对于 oneDNN 的调试版本，建议指定一个 Compute Library 版本，该版本也是在启用调试的情况下构建的。**
+>
+> oneDNN is only compatible with Compute Library builds v21.02 or later.
+>
+> **oneDNN 仅与 Compute Library 版本 v21.02 或更高版本兼容。**
 
 #### Vendor BLAS libraries
 
 oneDNN can use a standard BLAS library for GEMM operations. The `DNNL_BLAS_VENDOR` build option controls BLAS library selection, and defaults to `NONE`. For AArch64 builds with GCC, use the [Arm Performance Libraries](https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries):
 
-```cmake
+**oneDNN 可以使用标准的 BLAS 库进行 GEMM 操作。 `DNNL_BLAS_VENDOR` 构建选项控制 BLAS 库选择，默认为 `NONE`。 对于使用 GCC 构建的 AArch64，请使用 [Arm Performance Libraries](https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries)：**
+
+```bash
 $ cmake -DDNNL_BLAS_VENDOR=ARMPL ..
 ```
 
@@ -158,20 +186,30 @@ $ cmake -DDNNL_BLAS_VENDOR=ARMPL ..
 
 Additional options available for development/debug purposes. These options are subject to change without notice, see [`cmake/options.cmake`](https://github.com/oneapi-src/oneDNN/blob/master/cmake/options.cmake) for details.
 
-GPU Options
+**可用于开发/调试目的的其他选项。 这些选项如有更改，恕不另行通知，详情请参阅 [`cmake/options.cmake`](https://github.com/oneapi-src/oneDNN/blob/master/cmake/options.cmake)。**
+
+GPU Options/GPU 选项
 -----------
 
 Intel Processor Graphics is supported by oneDNN GPU engine. GPU engine is disabled in the default build configuration.
 
-### Runtimes
+**oneDNN GPU 引擎支持英特尔处理器显卡。 默认构建配置中禁用 GPU 引擎。**
+
+### Runtimes/运行时
 
 To enable GPU support you need to specify the GPU runtime by setting `DNNL_GPU_RUNTIME` CMake option. The default value is `"NONE"` which corresponds to no GPU support in the library.
 
+**要启用 GPU 支持，您需要通过设置 `DNNL_GPU_RUNTIME` CMake 选项来指定 GPU 运行时。 默认值为“NONE”，对应于库中不支持 GPU。**
+
 #### OpenCL*
+
+> OpenCL（Open Computing Language）是一个框架，用于编写跨异构平台执行的程序，这些平台包括中央处理单元 (CPU)、图形处理单元 (GPU)、数字信号处理器 (DSP)、现场可编程门阵列 (FPGA) 和其他 处理器或硬件加速器。
 
 OpenCL runtime requires Intel(R) SDK for OpenCL* applications. You can explicitly specify the path to the SDK using `-DOPENCLROOT` CMake option.
 
-```cmake
+**OpenCL 运行时需要用于 OpenCL* 应用程序的英特尔(R) SDK。 您可以使用 `-DOPENCLROOT` CMake 选项显式指定 SDK 的路径。**
+
+```bash
 $ cmake -DDNNL_GPU_RUNTIME=OCL -DOPENCLROOT=/path/to/opencl/sdk ..
 ```
 
