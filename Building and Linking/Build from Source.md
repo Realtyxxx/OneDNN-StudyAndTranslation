@@ -4,7 +4,7 @@
 
 # 从源安装
 
-## Download the Source Code
+## Down吧。load the Source Code
 ------------------------
 
 Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/master.zip) or clone [the repository](https://github.com/oneapi-src/oneDNN.git).
@@ -18,6 +18,14 @@ oneDNN的build系统是基于CMake的
 
 *   `CMAKE_INSTALL_PREFIX`控制库文件安装位置
 *   `CMAKE_BUILD_TYPE` 选择安装版本 (`Release`, `Debug`, `RelWithDebInfo`).
+    - Release —— 不可以打断点调试，程序开发完成后发行使用的版本，占的体积小。 它对代码做了优化，因此速度会非常快，
+      在编译器中使用命令： `-O3 -DNDEBUG` 可选择此版本。
+    - Debug ——调试的版本，体积大。
+      在编译器中使用命令： `-g` 可选择此版本。
+    - MinSizeRel—— 最小体积版本
+      在编译器中使用命令：`-Os -DNDEBUG`可选择此版本。
+    - RelWithDebInfo—— 既优化又能调试。
+      在编译器中使用命令：`-O2 -g -DNDEBUG`可选择此版本。
 *   `CMAKE_PREFIX_PATH` 如果你的依赖项没有安装在标准默认位置，需要用这个参数指定需要查找搜索的目录
 
 See [Build Options](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.html) for detailed description of build-time configuration options.
