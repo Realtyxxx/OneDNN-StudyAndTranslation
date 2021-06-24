@@ -241,7 +241,7 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
 
 #### oneAPI DPC++ Compiler
 
-DPC++:data parallel C++
+DPC++：data parallel C++
 
 *   Set up the environment for oneAPI DPC++ Compiler. For Intel oneAPI Base Toolkit distribution installed to default location you can do this using `setvars.bat` script
     
@@ -310,8 +310,6 @@ If the library is built for the host system, you can run unit tests using:
 ctest
 ```
 
-
-
 Build documenation
 ------------------
 
@@ -322,8 +320,6 @@ Build the documentation:
 ```bash
 cmake --build . --target doc
 ```
-
-
 
 Install library
 ---------------

@@ -56,17 +56,29 @@ oneDNN JIT relies on ISA features obtained from the processor it is being run on
 
 For performance reasons, sometimes oneDNN JIT needs to be provided with extra hints so as to prefer or avoid particular CPU ISA feature. For example, one might want to disable Zmm registers usage in order to take advantage of higher clock speed. The `DNNL_ENABLE_CPU_ISA_HINTS` build option makes this feature available at runtime. See [CPU ISA Hints](https://oneapi-src.github.io/oneDNN/dev_guide_cpu_isa_hints.html) for more information.
 
-### Runtimes
+**出于性能原因，有时需要为 oneDNN JIT 提供额外的提示，以便优先选择或避免特定的 CPU ISA 功能。 例如，人们可能想要禁用 Zmm 寄存器的使用以利用更高的时钟速度。 `DNNL_ENABLE_CPU_ISA_HINTS` 构建选项使此功能在运行时可用。 有关更多信息，请参阅 [CPU ISA 提示](https://oneapi-src.github.io/oneDNN/dev_guide_cpu_isa_hints.html)。**
+
+### Runtimes/运行时
 
 CPU engine can use OpenMP, Threading Building Blocks (TBB) or sequential threading runtimes. OpenMP threading is the default build mode. This behavior is controlled by the `DNNL_CPU_RUNTIME` CMake option.
+
+**CPU 引擎可以使用 OpenMP、线程构建块 (TBB) 或顺序线程运行时。 OpenMP 线程是默认的构建模式。 此行为由`DNNL_CPU_RUNTIME` CMake 选项控制。**
 
 #### OpenMP
 
 oneDNN uses OpenMP runtime library provided by the compiler.
 
-Warning
+**oneDNN 使用编译器提供的 OpenMP 运行时库。**
 
-Because different OpenMP runtimes may not be binary-compatible, it's important to ensure that only one OpenMP runtime is used throughout the application. Having more than one OpenMP runtime linked to an executable may lead to undefined behavior including incorrect results or crashes. However as long as both the library and the application use the same or compatible compilers there would be no conflicts.
+When building oneDNN with oneAPI DPC++/C++ Compiler the library will link to Intel OpenMP runtime. This behavior can be changed by changing the host compiler with `DNNL_DPCPP_HOST_COMPILER` option.
+
+**使用 oneAPI DPC++/C++ 编译器构建 oneDNN 时，该库将链接到英特尔 OpenMP 运行时。 可以通过使用`DNNL_DPCPP_HOST_COMPILER`选项更改主机编译器来更改此行为。**
+
+> Warning
+>
+> Because different OpenMP runtimes may not be binary-compatible, it's important to ensure that only one OpenMP runtime is used throughout the application. Having more than one OpenMP runtime linked to an executable may lead to undefined behavior including incorrect results or crashes. However as long as both the library and the application use the same or compatible compilers there would be no conflicts.
+>
+> **由于不同的 OpenMP 运行时可能不是二进制兼容的，因此确保在整个应用程序中只使用一个 OpenMP 运行时很重要。 将多个 OpenMP 运行时链接到一个可执行文件可能会导致未定义的行为，包括不正确的结果或崩溃。 但是，只要库和应用程序使用相同或兼容的编译器，就不会有冲突。**
 
 #### Threading Building Blocks (TBB)
 
