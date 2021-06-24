@@ -1,8 +1,9 @@
->  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build.html)Download oneDNN source code or clone the repository
-
 # 从源安装
 
+> 原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build.html)Download oneDNN source code or clone the repository
+
 ## Download the Source Code
+
 ------------------------
 
 Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/master.zip) or clone [the repository](https://github.com/oneapi-src/oneDNN.git).
@@ -34,7 +35,6 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
 > **CPU选项，指定特殊架构运用特定优化指令集，OpenMP。线程创建块，arm架构选项，ACL库，BLAS库，**
 >
 > **GPU选项，运行时（指定可用），OpenCL**
-
 ### Linux/macOS
 
 #### GCC, Clang, or Intel C/C++ Compiler
