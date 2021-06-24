@@ -93,6 +93,8 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
     
 *   Configure CMake and generate makefiles
     
+    配置CMake并且生成makefiles
+    
     ```bash
     mkdir -p build
     
