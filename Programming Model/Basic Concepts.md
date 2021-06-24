@@ -59,7 +59,7 @@ On the _logical_ level, the library provides the following abstractions:
 
 * _Memory descriptors_ ([dnnl::memory::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory_1_1desc.html)) define a tensor's logical dimensions, data type, and the format in which the data is laid out in memory. The special format _any_ ([dnnl::memory::format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec)) indicates that the actual format will be defined later (see [Memory Format Propagation](https://oneapi-src.github.io/oneDNN/memory_format_propagation_cpp.html)).
 
-  ***内存描述符* ([dnnl::memory::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory_1_1desc.html)) 定义了张量的逻辑维度、数据类型和数据放置的格式 在内存中。 特殊格式 _any_ ([dnnl::memory::format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec))表示实际格式将会稍后定义（看[Memory Format Propagation](https://oneapi-src.github.io/oneDNN/memory_format_propagation_cpp.html)）。**
+* ***内存描述符* ([dnnl::memory::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory_1_1desc.html)) 定义了张量的逻辑维度、数据类型和数据放置的格式 在内存中。 特殊格式 _any_ ([dnnl::memory::format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec))表示实际格式将会稍后定义（看[Memory Format Propagation](https://oneapi-src.github.io/oneDNN/memory_format_propagation_cpp.html)）。**
 
 * _Operation descriptors_ (one for each supported primitive) describe an operation's most basic properties without specifying, for example, which engine will be used to compute them. For example, convolution descriptor describes shapes of source, destination, and weights tensors, propagation kind (forward, backward with respect to data or weights), and other implementation-independent parameters.
 
@@ -92,7 +92,7 @@ There are two common ways for initializing memory descriptors:
 
 * By _querying_ an existing primitive descriptor for a memory descriptor corresponding to one of the primitive's parameters (for example, [dnnl::convolution_forward::primitive_desc::src_desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1primitive__desc.html#a0b525cb29996d52ce821b42824589fe3)).
 
-  **通过_查询_与原语参数之一对应的内存描述符的现有原语描述符（例如，[dnnl::convolution_forward::primitive_desc::src_desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1primitive__desc. html#a0b525cb29996d52ce821b42824589fe3))。**
+  **通过_查询_与原语参数之一对应的内存描述符的现有原语描述符（例如，[dnnl::convolution_forward::primitive_desc::src_desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1primitive__desc.html#a0b525cb29996d52ce821b42824589fe3)).*。
 
 Memory objects can be created with a user-provided handle (a `void *` on CPU), or without one, in which case the library will allocate storage space on its own.
 
@@ -106,7 +106,7 @@ The sequence of actions to create a primitive is:
 
 1. Create an operation descriptor via, for example, [dnnl::convolution_forward::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1desc.html). The operation descriptor can contain memory descriptors with placeholder [format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec) memory formats if the primitive supports it.
 
-   **例如，通过 [dnnl::convolution_forward::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1desc.html) 创建操作描述符。 如果支持原语内存格式操作描述符可以包含带有占位符的内存描述符 [format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f17 )。**
+   **例如，通过 [dnnl::convolution_forward::desc](https://oneapi-src.github.io/oneDNN/structdnnl_1_1convolution__forward_1_1desc.html) 创建操作描述符。 如果支持原语内存格式操作描述符可以包含带有占位符的内存描述符 [format_tag::any](https://oneapi-src.github.io/oneDNN/structdnnl_1_1memory.html#a8e71077ed6a5f7fb7b3e6e1a5a2ecf3fa100b8cad7cf2a56f6df78f171f97a1ec)**。
 
 2. Create a primitive descriptor based on the operation descriptor, engine and attributes.
 
