@@ -135,6 +135,8 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
 
 *   Configure CMake and generate makefiles
     
+    **配置CMake并且生成makefiles**
+    
     ```bash
     export CC=aarch64-linux-gnu-gcc
     
@@ -155,10 +157,12 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
     
 * Build the library
 
+  **生成库**
+  
   ```bash
   make -j
   ```
-
+  
   
 
 #### GCC with Arm Compute Library (ACL) on AArch64 host
@@ -170,6 +174,8 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
   **建造环境**
 
 *   Configure CMake and generate makefiles
+    
+    **配置CMake并且生成makefiles**
     
     ```bash
     export ACL_ROOT_DIR=<path/to/Compute Library>
@@ -183,10 +189,12 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
     
 *   Build the library
 
+    **生成库**
+    
     ```bash
     make -j
     ```
-
+    
     
 
 ### Windows
@@ -217,10 +225,12 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
     
 * Build the library
 
+  **生成库**
+  
   ```bash
   make --build
   ```
-
+  
   
 
 > Note
@@ -247,7 +257,11 @@ DPC++:data parallel C++
     
 * Download [oneAPI Level Zero headers](https://github.com/oneapi-src/level-zero/releases/tag/v1.0) from Github and unpack the archive.
 
+  **从github下载oneAPI 0级头文件并且解压**
+
 *   Generate `Ninja` project
+    
+    生成`Ninja`项目
     
     ```bash
     mkdir build
@@ -278,10 +292,12 @@ DPC++:data parallel C++
     
 * Build the library
 
+  **生成库**
+  
   ```bash
   cmake --build
   ```
-
+  
 
 Validate the Build/检测是否build成功
 ------------------
