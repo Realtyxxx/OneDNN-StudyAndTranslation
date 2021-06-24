@@ -1,5 +1,6 @@
 ---
 description: oneDNN Documentation
+personal study-used
 ---
 
 # Introduction
