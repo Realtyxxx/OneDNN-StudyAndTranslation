@@ -16,19 +16,22 @@ Download [oneDNN source code](https://github.com/oneapi-src/oneDNN/archive/maste
 
 oneDNN的build系统是基于CMake的
 
-*   `CMAKE_INSTALL_PREFIX`控制库文件安装位置
-*   `CMAKE_BUILD_TYPE` 选择安装版本 (`Release`, `Debug`, `RelWithDebInfo`).
-    - Release —— 不可以打断点调试，程序开发完成后发行使用的版本，占的体积小。 它对代码做了优化，因此速度会非常快，
-      在编译器中使用命令： `-O3 -DNDEBUG` 可选择此版本。
-    - Debug ——调试的版本，体积大。
-      在编译器中使用命令： `-g` 可选择此版本。
-    - MinSizeRel—— 最小体积版本
-      在编译器中使用命令：`-Os -DNDEBUG`可选择此版本。
-    - RelWithDebInfo—— 既优化又能调试。
-      在编译器中使用命令：`-O2 -g -DNDEBUG`可选择此版本。
-*   `CMAKE_PREFIX_PATH` 如果你的依赖项没有安装在标准默认位置，需要用这个参数指定需要查找搜索的目录
+* `CMAKE_INSTALL_PREFIX`控制库文件安装位置
 
-See [Build Options](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.html) for detailed description of build-time configuration options.
+* `CMAKE_BUILD_TYPE` 选择安装版本 (`Release`, `Debug`, `RelWithDebInfo`).
+
+  - Release —— 不可以打断点调试，程序开发完成后发行使用的版本，占的体积小。 它对代码做了优化，因此速度会非常快，
+    在编译器中使用命令： `-O3 -DNDEBUG` 可选择此版本。
+  - Debug ——调试的版本，体积大。
+    在编译器中使用命令： `-g` 可选择此版本。
+  - MinSizeRel—— 最小体积版本
+    在编译器中使用命令：`-Os -DNDEBUG`可选择此版本。
+  - RelWithDebInfo—— 既优化又能调试。
+    在编译器中使用命令：`-O2 -g -DNDEBUG`可选择此版本。
+
+* `CMAKE_PREFIX_PATH` 如果你的依赖项没有安装在标准默认位置，需要用这个参数指定需要查找搜索的目录
+
+  See [Build Options](./Build Options.md) for detailed description of build-time configuration options.
 
 > CPU选项，指定特殊架构运用特定优化指令集，OpenMP。线程创建块，arm架构选项，ACL库，BLAS库，
 >
@@ -126,7 +129,7 @@ See [Build Options](https://oneapi-src.github.io/oneDNN/dev_guide_build_options.
 
 * Set up the environment for the compiler
 
-  给编译器搭建好环境（没写专门指令）
+  给编译器搭建好环境
 
 *   Configure CMake and generate makefiles
     
@@ -313,6 +316,8 @@ Install library
 ---------------
 
 Install the library, headers, and documentation
+
+安装库文件，头文件还有文档。
 
 ```bash
 cmake --build . --target install
