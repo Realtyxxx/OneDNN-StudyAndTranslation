@@ -1,6 +1,5 @@
 # 基本概念
-  >  原文地址 [oneapi-src.github.io](https://oneapi-
-src.github.io/oneDNN/dev_guide_basic_concepts.html)
+  >  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_basic_concepts.html)
 
 ### 总结：
 
@@ -20,9 +19,9 @@ Figure 1: Overview of oneDNN programming model. Blue rectangles denote oneDNN ob
 
 ### Primitives
 
-* oneDNN is built around the notion of a _primitive_ ([dnnl::primitive](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive.html)). A _primitive_ is an object that encapsulates a particular computation such as forward convolution, backward LSTM computations, or a data transformation operation. Additionally, using primitive _attributes_ ([dnnl::primitive_attr](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive__attr.html)) certain primitives can represent more complex _fused_ computations such as a forward convolution followed by a ReLU. 
+* oneDNN is built around the notion of a _primitive_ ([dnnl::primitive](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive.html)). A _primitive_ is an object that encapsulates a particular computation such as forward convolution, backward LSTM computations, or a data transformation operation. Additionally, using primitive _attributes_ ([dnnl::primitive_attr](https://oneapi-src.github.io/oneDNN/structdnnl_1_1primitive__attr.html)) certain primitives can represent more complex _fused_ computations such as a forward convolution followed by a ReLU.  
 
-  **oneDNN是围绕原语（dnnl :: primitive）的概念构建的。 原语是封装特定计算（例如正向卷积，反向LSTM计算或数据转换操作）的对象。 此外，使用原语属性（dnnl :: primitive_attr），某些原语可以表示更复杂的融合计算，例如后接ReLU的正向卷积。**
+  **oneDNN是围绕原语（dnnl :: primitive）的概念构建的。 原语是封装特定计算（例如正向卷积，反向LSTM计算或数据转换操作）的对象。 此外，使用原语属性（dnnl :: primitive_attr），某些原语可以表示更复杂的融合计算，例如后接ReLU的正向卷积。** 
 
 * The most important difference between a primitive and a pure function is that a primitive can store state.  
   **原语和纯函数之间的最重要区别是，原语可以存储状态。**

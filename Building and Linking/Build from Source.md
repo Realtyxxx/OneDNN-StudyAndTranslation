@@ -1,6 +1,4 @@
->  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build.html)
-
-> Download oneDNN source code or clone the repository
+>  原文地址 [oneapi-src.github.io](https://oneapi-src.github.io/oneDNN/dev_guide_build.html)Download oneDNN source code or clone the repository
 
 # 从源安装
 
